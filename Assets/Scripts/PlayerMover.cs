@@ -10,8 +10,7 @@ public class PlayerMover : MonoBehaviour {
 
 	public float speed;
 	public Boundary boundary;
-	public ArrayList inventory;
-	
+
 	void FixedUpdate () {
 		float moveHorizontal = Input.GetAxis ("Horizontal");
 		float moveVertical = Input.GetAxis ("Vertical");
