@@ -22,6 +22,6 @@ public class PlayerMover : MonoBehaviour {
 		    Mathf.Clamp (rigidbody2D.position.y, boundary.yMin, boundary.yMax)
 		 );
 	}
-	
+
 }
  

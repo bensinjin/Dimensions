@@ -3,18 +3,44 @@ using System.Collections;
 using System.Collections.Generic;
 
 public class Inventory : MonoBehaviour {
+	public int slotsX, slotsY;
+	public GUISkin skin;
 	public List<Item> inventory = new List<Item>();
-	private ItemDatabase db;
-	// Use this for initialization
-	void Start () {
-		db = GameObject.FindGameObjectWithTag ("Item Database").GetComponent<ItemDatabase>();
+	public List<Item> slots = new List<Item>();
+	private bool showInv = false;
+
+	void Start() {
+		for (int i = 0; i <  (slotsX * slotsY); i ++) {
+			slots.Add (new Item());
+			inventory.Add (new Item());
+		}
 	}
-	
-	void OnGUI() {
+
+	void Update() {
 		if (Input.GetKeyDown (KeyCode.X)) {
-			for (int i = 0; i < inventory.Count; i++) {
-				print (inventory[i].itemName);
-				GUI.Label (new Rect(5,i * 20, 200, 50), inventory[i].itemName);
+			//Toggle inventory
+			showInv = !showInv;
+		}
+	}
+
+	void OnGUI() {
+		GUI.skin = skin;
+		if (showInv) {
+			drawInventory();
+		}
+	}
+
+	void drawInventory() {
+		int i = 0;
+		for (int x = 0; x < slotsX; x++) {
+			for (int y = 0; y < slotsY; y++) {
+				Rect slotRect = new Rect(x * 20, y * 20, 20, 20);
+				GUI.Box (slotRect, "", skin.GetStyle("Slot"));
+				slots[i] = inventory[i];
+				if (slots[i].itemName != null) {
+					GUI.DrawTexture (slotRect, slots[i].itemIcon);
+				}
+				i ++;
 			}
 		}
 	}
