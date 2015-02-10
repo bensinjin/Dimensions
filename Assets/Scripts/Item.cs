@@ -4,7 +4,7 @@ using System.Collections;
 [System.Serializable]
 public class Item {
 	public string itemName;
-	public int itemId;
+	public string itemMachineName;
 	public string itemDescription;
 	public Texture2D itemIcon;
 	public ItemType itemType;
@@ -15,9 +15,9 @@ public class Item {
 		Quest
 	}
 
-	public Item(string name, int id, string desc, ItemType type) {
+	public Item(string name, string machineName, string desc, ItemType type) {
 		this.itemName = name;
-		this.itemId = id;
+		this.itemMachineName = machineName;
 		this.itemDescription = desc;
 		this.itemIcon = Resources.Load<Texture2D>("Item Icons/"  + name);
 		this.itemType = type;

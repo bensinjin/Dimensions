@@ -51,7 +51,10 @@
      <Compile Include="Assets\Scripts\ItemDatabase.cs" />
      <Compile Include="Assets\Scripts\PlayerMover.cs" />
      <Compile Include="Assets\Scripts\SignTrigger.cs" />
+     <Compile Include="Assets\Scripts\Storyline Scripts\Chapter One\ChapOneAwake.cs" />
+     <Compile Include="Assets\Scripts\Storyline Scripts\Chapter One\ChapterOneStrings.cs" />
      <Compile Include="Assets\Scripts\SwordTrigger.cs" />
+     <Compile Include="Assets\Scripts\UI\GUIBuilder.cs" />
  <Reference Include="UnityEngine.UI">
  <HintPath>C:/Program Files (x86)/Unity/Editor/Data/UnityExtensions/Unity/GUISystem/4.6.2/UnityEngine.UI.dll</HintPath>
  </Reference>
