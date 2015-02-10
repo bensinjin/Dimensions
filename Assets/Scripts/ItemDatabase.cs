@@ -6,6 +6,16 @@ public class ItemDatabase : MonoBehaviour {
 	public List<Item> items = new List<Item>(); 
 
 	void Start() {
-		items.Add (new Item ("Great Sword", 0, "The Greatest Sword", Item.ItemType.Weapon));
+		items.Add(new Item ("Great Sword", "great_sword", "The Greatest Sword", Item.ItemType.Weapon));
+	}
+
+	public Item findByMachineName(string machineName) {
+		foreach (Item i in items) {
+			if (i.itemMachineName == machineName) {
+				return i;
+			}
+		}
+
+		return null;
 	}
 }

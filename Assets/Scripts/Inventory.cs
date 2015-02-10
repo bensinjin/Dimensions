@@ -10,6 +10,8 @@ public class Inventory : MonoBehaviour {
 	private bool showInv = false;
 
 	void Start() {
+		slots.Clear ();
+		inventory.Clear ();
 		for (int i = 0; i <  (slotsX * slotsY); i ++) {
 			slots.Add (new Item());
 			inventory.Add (new Item());
@@ -30,11 +32,15 @@ public class Inventory : MonoBehaviour {
 		}
 	}
 
+	void addItem(Item item) {
+
+	}
+
 	void drawInventory() {
 		int i = 0;
-		for (int x = 0; x < slotsX; x++) {
-			for (int y = 0; y < slotsY; y++) {
-				Rect slotRect = new Rect(x * 20, y * 20, 20, 20);
+		for (int y = 0; y < slotsY; y++) {
+			for (int x = 0; x < slotsX; x++) {
+				Rect slotRect = new Rect((x + 5) * 20, (y  + 5) * 20, 20, 20);
 				GUI.Box (slotRect, "", skin.GetStyle("Slot"));
 				slots[i] = inventory[i];
 				if (slots[i].itemName != null) {
