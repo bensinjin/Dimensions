@@ -14,7 +14,7 @@ public class ChapOneAwake : MonoBehaviour {
 	void OnGUI() {
 		if (showIntroBox) {
 			string text = "I would leave tonight. Tonight was the darkest I'd seen. [z]";
-			Rect rect = GUIBuilder.getTextBox (text, -200, 30);
+			Rect rect = GUIBuilder.getTextBox (text, 0, 35);
 			GUI.Box (rect, text, skin.GetStyle ("Box"));
 		}
 	}

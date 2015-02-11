@@ -10,7 +10,7 @@ public class SwordTrigger : MonoBehaviour {
 	
 	void OnTriggerStay2D(Collider2D other) {
 		if (Input.GetKeyDown (KeyCode.Z) &&  !swordTextDisplayed) {
-			inv.inventory[0] = db.findByMachineName("great_sword");
+			inv.inventory[0] = (Item)db.findByMachineName("great_sword");
 			GameObject.Destroy(sword);
 			swordTextDisplayed = true;
 		}
