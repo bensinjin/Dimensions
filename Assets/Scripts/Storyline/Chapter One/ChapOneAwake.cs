@@ -1,22 +1,22 @@
 ﻿using UnityEngine;
 using System.Collections;
+using System.Collections.Generic;
 
 public class ChapOneAwake : MonoBehaviour {
-	public GUISkin skin;
-	private bool showIntroBox = true;
+	private GameManager gm;
 
-	void Update() {
-		if (Input.GetKeyDown (KeyCode.Z)) {
-			showIntroBox  = false;
-		}
+	void Start () {
+		gm = GameManager.instance;
+		// Setup our intial system messages queue
+		gm.systemMessages.Add(
+			gm.mdb.findByMachineName("chp1_i_would_leave")
+		);
+		
+		// Setup our initial hint message queue
+		gm.hintMessages.Add(
+			gm.mdb.findByMachineName("chp1_its_pitch_black")
+		);	
 	}
 
-	void OnGUI() {
-		if (showIntroBox) {
-			string text = "I would leave tonight. Tonight was the darkest I'd seen. [z]";
-			Rect rect = GUIBuilder.getTextBox (text, 0, 35);
-			GUI.Box (rect, text, skin.GetStyle ("Box"));
-		}
-	}
 
 }

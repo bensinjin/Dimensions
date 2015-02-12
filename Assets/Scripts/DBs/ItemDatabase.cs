@@ -2,10 +2,24 @@
 using System.Collections;
 using System.Collections.Generic;
 
-public class ItemDatabase : Database {
+public class ItemDatabase {
 	public List<Item> items = new List<Item>(); 
 
-	void Start() {
-		items.Add(new Item ("Great Sword", "great_sword", "The Greatest Sword", Item.ItemType.Weapon));
-	}	
+	public void populate() {
+		// Quest
+		items.Add(
+			new Item ("Lighter", "lighter", "Kylan's firestick.", Item.ItemType.Quest)
+		);
+	}
+
+	public Item findByMachineName(string machineName) {
+		foreach (Item i in items) {
+			if (i.machineName == machineName) {
+				return i;
+			}
+		}
+
+		Debug.LogWarning("There were no item results back for " + machineName);
+		return null;
+	}
 }

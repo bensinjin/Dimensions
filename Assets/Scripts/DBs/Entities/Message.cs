@@ -3,21 +3,25 @@ using System.Collections;
 
 [System.Serializable]
 public class Message : Entity {
-
+	
 	public string text;
-	public bool displayed;
 	public MessageType type;
+	public string triggerMachineName;
+	public bool displayed;
 	
 	public enum MessageType {
 		System,
-		NPC
+		NPC,
+		Hint,
+		Trigger
 	}
 	
-	public Message(string machineName, string text, bool displayed, MessageType type) {
+	public Message(string machineName, string text, MessageType type, string triggerMachineName = null) {
 		this.machineName = machineName;
 		this.text = text;
-		this.displayed = displayed;
 		this.type = type;
+		this.triggerMachineName = triggerMachineName;
+		this.displayed = false;
 	}
 	
 	public Message() {}
