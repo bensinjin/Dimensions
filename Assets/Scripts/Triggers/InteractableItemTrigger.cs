@@ -37,21 +37,25 @@ public class InteractableItemTrigger : MonoBehaviour {
 	}
 
 	void OnTriggerStay2D(Collider2D other) {
-		if (Input.GetKeyDown (KeyCode.Z)) {
+		if (Input.GetKeyDown (KeyCode.Z) && triggerMsgs.Count > 0) {
 			zCount += 1;
 			index = zCount - 1;
-			if (zCount > triggerMsgs.Count) {
+			if (zCount == triggerMsgs.Count + 1) {
 				// Add our item to the inventory
 				inv.inv[0] = idb.findByMachineName(itemMachineName);
 				//Remove item from the scene
 				GameObject.Destroy(referencedObject);
 				//Clear the messages
 				triggerMsgs.Clear();
+				zCount = 0;
 			} 
 		}
 	}
 
 	void OnGUI() {
+		// If the number of times z is pressed >= 1
+		// and it is not greater than the number of
+		// messages in the queue, show the message.
 		if (zCount >= 1 && zCount <= triggerMsgs.Count) {
 			Message msg = triggerMsgs[index];
 			Rect rect = GUIBuilder.getTextBox (msg.text, 0, 35);

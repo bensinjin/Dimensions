@@ -4,6 +4,8 @@ using System.Collections.Generic;
 
 public class ChapOneAwake : MonoBehaviour {
 	private GameManager gm;
+	private bool lightOn = false;
+	public Light light;
 
 	void Start () {
 		gm = GameManager.instance;
@@ -16,6 +18,14 @@ public class ChapOneAwake : MonoBehaviour {
 		gm.hintMessages.Add(
 			gm.mdb.findByMachineName("chp1_its_pitch_black")
 		);	
+	}
+
+	void Update() {
+		if (gm.inv.inv.Contains(gm.idb.findByMachineName("lighter")) && lightOn == false) {
+			GameObject player = GameObject.FindGameObjectWithTag("Player");
+			light.intensity = 1.0f;
+			lightOn = true;
+		}
 	}
 
 
