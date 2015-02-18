@@ -48,6 +48,7 @@ public class PlayerInput : MonoBehaviour {
 
 	void drawUi() {
 		GUI.BeginGroup (GUIBuilder.getUiBorder(), uiSkin.GetStyle("Box"));
+
 		GUI.EndGroup ();
 	}
 

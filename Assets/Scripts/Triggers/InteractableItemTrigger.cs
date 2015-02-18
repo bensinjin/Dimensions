@@ -40,11 +40,13 @@ public class InteractableItemTrigger : MonoBehaviour {
 		if (Input.GetKeyDown (KeyCode.Z) && triggerMsgs.Count > 0) {
 			zCount += 1;
 			index = zCount - 1;
-			if (zCount == triggerMsgs.Count + 1) {
+			if (zCount == triggerMsgs.Count) {
 				// Add our item to the inventory
 				inv.inv[0] = idb.findByMachineName(itemMachineName);
 				//Remove item from the scene
 				GameObject.Destroy(referencedObject);
+			}
+			if (zCount == triggerMsgs.Count + 1) {
 				//Clear the messages
 				triggerMsgs.Clear();
 				zCount = 0;
