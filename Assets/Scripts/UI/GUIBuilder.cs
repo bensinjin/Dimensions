@@ -14,5 +14,11 @@ public class GUIBuilder : MonoBehaviour {
 		Rect rect = new Rect (Screen.width/2 - width/2, yPos, width, height);
 
 		return rect;
+	}
+
+	public static Rect getUiBorder() {
+		Rect rect = new Rect (Screen.width/2 - Screen.width/2, 30, 500, 400);
+		
+		return rect;
 	}	
 }

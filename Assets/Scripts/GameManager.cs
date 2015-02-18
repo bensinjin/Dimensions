@@ -10,6 +10,7 @@ public class GameManager : MonoBehaviour  {
 	public Inventory inv = new Inventory(4, 5);
 	// Styles
 	public GUISkin textBoxSkin;
+	public GUISkin uiSkin;
 	// Message Queues
 	public List<Message> systemMessages = new List<Message>();
 	public List<Message> hintMessages = new List<Message>();

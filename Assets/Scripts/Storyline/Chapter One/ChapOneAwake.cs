@@ -4,11 +4,14 @@ using System.Collections.Generic;
 
 public class ChapOneAwake : MonoBehaviour {
 	private GameManager gm;
-	private bool lightOn = false;
-	public Light light;
+	private bool lightOn;
+	private GameObject player;
 
 	void Start () {
+		lightOn = false;
 		gm = GameManager.instance;
+		player = GameObject.FindGameObjectWithTag("Player");
+
 		// Setup our intial system messages queue
 		gm.systemMessages.Add(
 			gm.mdb.findByMachineName("chp1_i_would_leave")
@@ -22,8 +25,7 @@ public class ChapOneAwake : MonoBehaviour {
 
 	void Update() {
 		if (gm.inv.inv.Contains(gm.idb.findByMachineName("lighter")) && lightOn == false) {
-			GameObject player = GameObject.FindGameObjectWithTag("Player");
-			light.intensity = 1.0f;
+			player.light.intensity = 1.0f;
 			lightOn = true;
 		}
 	}

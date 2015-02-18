@@ -10,12 +10,13 @@ public class PlayerInput : MonoBehaviour {
 	
 	public float speed;
 	public Boundary boundary;
-	public GUISkin skin;
+	private GUISkin uiSkin;
 	private bool showUi;
 	private GameManager gm;
 
 	void Start() {
 		gm = GameManager.instance;
+		uiSkin = gm.uiSkin;
 	}
 	
 	// Player movement
@@ -40,12 +41,17 @@ public class PlayerInput : MonoBehaviour {
 	}
 
 	void OnGUI() {
-		GUI.skin = skin;
 		if (showUi) {
 			drawUi();
 		}
 	}
 
+	void drawUi() {
+		GUI.BeginGroup (GUIBuilder.getUiBorder(), uiSkin.GetStyle("Box"));
+		GUI.EndGroup ();
+	}
+
+	/*
 	void drawUi() {
 		int slotsY = gm.inv.slotsY;
 		int slotsX = gm.inv.slotsX;
@@ -62,4 +68,5 @@ public class PlayerInput : MonoBehaviour {
 			}
 		}
 	}
+	*/
 }
