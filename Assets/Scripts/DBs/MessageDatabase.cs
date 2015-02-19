@@ -38,7 +38,7 @@ public class MessageDatabase {
 				Message.MessageType.System
 			)
 		);
-		// Hints
+		// Hints (Not currently in use)
 		messages.Add(
 			new Message(
 				"chp1_its_pitch_black",

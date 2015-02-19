@@ -18,7 +18,8 @@ public class Item : Entity {
 		this.itemName = name;
 		this.machineName = machineName;
 		this.itemDescription = desc;
-		this.itemIcon = Resources.Load<Texture2D>("Item Icons/"  + name);
+		//TODO
+		//this.itemIcon = Resources.Load<Texture2D>("Item Icons/"  + name);
 		this.itemType = type;
 	}
 

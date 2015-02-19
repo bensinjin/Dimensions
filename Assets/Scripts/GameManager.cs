@@ -7,14 +7,12 @@ public class GameManager : MonoBehaviour  {
 	public MessageDatabase mdb = new MessageDatabase();
 	public ItemDatabase idb = new ItemDatabase();
 	// Misc
-	public Inventory inv = new Inventory(4, 5);
+	public Inventory inv = new Inventory();
 	// Styles
 	public GUISkin textBoxSkin;
 	public GUISkin uiSkin;
-	// Message Queues
+	// System Message Queue
 	public List<Message> systemMessages = new List<Message>();
-	public List<Message> hintMessages = new List<Message>();
-	private bool showHint;
 
 	/**END OF PUBLIC VARIABLES**/
 
@@ -39,33 +37,8 @@ public class GameManager : MonoBehaviour  {
 	void Start() {
 		mdb.populate();
 		idb.populate();
-		showHint = false;
 	}
 
-	void Update() {
-		if (Input.GetKeyDown (KeyCode.Z) && systemMessages.Count > 0) {
-			systemMessages.Remove(systemMessages[0]);
-		}
-		
-		if (Input.GetKeyDown (KeyCode.X) && hintMessages.Count > 0) {
-			showHint = !showHint;
-		}
-	}
-
-	void OnGUI() {
-		// If we have a system message (removed when z is pressed) show it.
-		if (systemMessages.Count > 0) {
-			Message msg = systemMessages[0];
-			Rect rect = GUIBuilder.getTextBox (msg.text, 0, 35);
-			GUI.Box (rect, msg.text, textBoxSkin.GetStyle ("Box"));
-		}
-		if (showHint) {
-			Message msg = hintMessages[0];
-			Rect rect = GUIBuilder.getTextBox (msg.text, 0, 35, 150);
-			GUI.Box (rect, msg.text, textBoxSkin.GetStyle ("Box"));
-		}
-	}
-	
 	void Awake() {
 		if(_instance == null)
 		{

@@ -2,6 +2,8 @@
 using System.Collections;
 
 public class GUIBuilder : MonoBehaviour {
+	// Private constructor, this class cannot be instantiated
+	private GUIBuilder() {}
 
 	public static Rect getTextBox(string text, int addedWidth = 0, int addedHeight = 0, int addedY = 0) {
 		Vector2 textDimensions = GUI.skin.label.CalcSize(new GUIContent(text));
@@ -16,9 +18,13 @@ public class GUIBuilder : MonoBehaviour {
 		return rect;
 	}
 
-	public static Rect getUiBorder() {
-		Rect rect = new Rect (Screen.width/2 - Screen.width/2, 30, 500, 400);
-		
-		return rect;
-	}	
+	public static void buildUi(GUISkin skin, Inventory inv) {
+		Rect border = new Rect (Screen.width/2 - 250, 30, 500, 350);
+		GUI.BeginGroup (border, skin.GetStyle("Box"));
+		for (int i = 0; i < inv.getSlotsFilled(); i ++) {
+			Rect labelRect = new Rect(10, i + 30, 100, 30);
+			GUI.Box(labelRect, inv.items[i].itemName, skin.GetStyle("Box"));
+		}
+		GUI.EndGroup ();
+	}
 }

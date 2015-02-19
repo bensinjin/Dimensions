@@ -16,15 +16,11 @@ public class ChapOneAwake : MonoBehaviour {
 		gm.systemMessages.Add(
 			gm.mdb.findByMachineName("chp1_i_would_leave")
 		);
-		
-		// Setup our initial hint message queue
-		gm.hintMessages.Add(
-			gm.mdb.findByMachineName("chp1_its_pitch_black")
-		);	
+
 	}
 
 	void Update() {
-		if (gm.inv.inv.Contains(gm.idb.findByMachineName("lighter")) && lightOn == false) {
+		if (gm.inv.items.Contains(gm.idb.findByMachineName("lighter")) && lightOn == false) {
 			player.light.intensity = 1.0f;
 			lightOn = true;
 		}
