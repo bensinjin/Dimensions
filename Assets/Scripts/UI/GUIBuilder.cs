@@ -21,9 +21,10 @@ public class GUIBuilder : MonoBehaviour {
 	public static void buildUi(GUISkin skin, Inventory inv) {
 		Rect border = new Rect (Screen.width/2 - 250, 30, 500, 350);
 		GUI.BeginGroup (border, skin.GetStyle("Box"));
+		GUI.DrawTexture (new Rect(10, 25, 200, 300), Resources.Load<Texture2D>("Character/Character"));
 		for (int i = 0; i < inv.getSlotsFilled(); i ++) {
-			Rect labelRect = new Rect(10, i + 30, 100, 30);
-			GUI.Box(labelRect, inv.items[i].itemName, skin.GetStyle("Box"));
+			Rect labelRect = new Rect(350, i + 30, 100, 30);
+			GUI.Box(labelRect, inv.items[i].itemName, skin.GetStyle("ItemBox"));
 		}
 		GUI.EndGroup ();
 	}
